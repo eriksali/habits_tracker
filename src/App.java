@@ -21,6 +21,11 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+//import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.*;
+
 public class App extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -137,10 +142,14 @@ public class App extends Application {
         
 
 
-        Button button2 = new Button("Add a Habit...");
+        Button button2 = new Button("Button2");
         button2.setPrefSize(100, 20);
         button2.setFont(Font.font("Times New Roman", FontWeight.BOLD, 12));
         grid.add(button2, 0, 2);
+
+        button2.setOnAction(e -> display());
+
+
 
         Button button3 = new Button("Add a Habit...");
         button3.setPrefSize(100, 20);
@@ -229,7 +238,34 @@ public class App extends Application {
 
     }
 
-    
+         
+    public static void display()
+    {
+        Stage popupwindow=new Stage();
+            
+        popupwindow.initModality(Modality.APPLICATION_MODAL);
+        popupwindow.setTitle("This is a pop up window");      
+            
+        Label label1= new Label("Pop up window now displayed");         
+            
+        Button button1= new Button("Close this pop up window");   
+            
+        button1.setOnAction(e -> popupwindow.close());
+            
+        VBox layout= new VBox(10);
+            
+        layout.getChildren().addAll(label1, button1);
+            
+        layout.setAlignment(Pos.CENTER);
+            
+        Scene scene1= new Scene(layout, 300, 250);
+            
+        popupwindow.setScene(scene1);
+            
+        popupwindow.showAndWait();
+        
+    }
+
 
 }
 
